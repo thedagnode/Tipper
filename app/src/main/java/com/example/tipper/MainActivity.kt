@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                         // change emoticon
                         // "if-statement" for safety so we don't try to pick an image out of bounds
                         // in this case we cant, I have 6 steps and 6 icons
-                        if(progress<6) {
+                        if(progress < DEFAULT_ICONS.size) {
                             binding.emoticonIV.setImageResource(DEFAULT_ICONS[progress])
                         }
 
