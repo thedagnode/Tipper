@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Tipper</string>
+    <string name="total">TOTAL: $</string>
+    <string name="_0">0</string>
+    <string name="tip">Tip</string>
+    <string name="smiley_face">smiley face</string>
+    <string name="_25">25%</string>
+    <string name="amount">Amount: $</string>
+    <string name="gif">gif</string>
 </resources>

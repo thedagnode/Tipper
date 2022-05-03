@@ -6,6 +6,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import com.bumptech.glide.Glide
 import com.example.tipper.databinding.ActivityMainBinding
 
 
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         binding.amountET.doAfterTextChanged{
             calculateTip()
         }
+
+        // add the gif
+        Glide.with(this).load(R.drawable.money_04).into(binding.moneyGifIV)
 
 
 
@@ -54,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                         binding.tipPercentET.textSize = TEXT_SIZE[progress].toFloat()
 
                         seekBar.secondaryProgress = progress
-                        var sliderValue = ((progress * 5) + 5).toString()
+                        val sliderValue = ((progress * 5) + 5).toString()
 
                         binding.tipPercentET.text = "$sliderValue%"
                         calculateTip()
@@ -92,9 +96,9 @@ class MainActivity : AppCompatActivity() {
         //binding.tipSB.incrementProgressBy(5)
         binding.tipSB.max = 5
         binding.tipSB.progress = 2
-        var progressVal = binding.tipSB.progress
+        val progressVal = binding.tipSB.progress
         //
-        var sliderValue = ((progressVal * 5) + 5).toString()
+        val sliderValue = ((progressVal * 5) + 5).toString()
         binding.tipPercentET.text = "$sliderValue%"
         binding.tipPercentET.textSize = TEXT_SIZE[progressVal].toFloat()
         binding.emoticonIV.setImageResource(DEFAULT_ICONS[progressVal])
