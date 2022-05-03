@@ -10,13 +10,3 @@ val DEFAULT_ICONS = listOf(
     R.drawable.emoticon05,
     R.drawable.emoticon06
 )
-
-
-val TEXT_SIZE = listOf(
-    20,
-    23,
-    27,
-    32,
-    36,
-    40
-)

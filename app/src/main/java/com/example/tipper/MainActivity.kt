@@ -1,10 +1,14 @@
 package com.example.tipper
 
+import android.animation.ArgbEvaluator
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import com.bumptech.glide.Glide
 import com.example.tipper.databinding.ActivityMainBinding
@@ -55,13 +59,14 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         // scale text with increasing percentage
-                        binding.tipPercentET.textSize = TEXT_SIZE[progress].toFloat()
-
+                        //binding.tipPercentTV.textSize = TEXT_SIZE[progress].toFloat()
+                        /*
                         seekBar.secondaryProgress = progress
                         val sliderValue = ((progress * 5) + 5).toString()
-
-                        binding.tipPercentET.text = "$sliderValue%"
+                        binding.tipPercentTV.text = "$sliderValue%"
+                        */
                         calculateTip()
+                        updateTipPercentTV(progress)
                     }
                 }
             }
@@ -70,8 +75,31 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun updateTipPercentTV(tipPercent: Int) {
 
+        val sliderValue = ((tipPercent * 5) + 5).toString()
+        binding.tipPercentTV.text = "$sliderValue%"
 
+        // text size
+        when(tipPercent){
+            0 -> binding.tipPercentTV.textSize = 20.0F;
+            1 -> binding.tipPercentTV.textSize = 23.0F;
+            2 -> binding.tipPercentTV.textSize = 27.0F;
+            3 -> binding.tipPercentTV.textSize = 32.0F;
+            4 -> binding.tipPercentTV.textSize = 36.0F;
+            5 -> binding.tipPercentTV.textSize = 40.0F;
+
+        }
+
+        // text color
+        val color = ArgbEvaluator().evaluate(
+            tipPercent.toFloat()/binding.tipSB.max,
+            ContextCompat.getColor(this, R.color.worst_tip),
+                    ContextCompat.getColor(this, R.color.best_tip)
+        )
+        binding.tipPercentTV.setTextColor(ColorStateList.valueOf(color as Int))
+
+    }
 
 
     fun calculateTip(){
@@ -98,11 +126,13 @@ class MainActivity : AppCompatActivity() {
         binding.tipSB.progress = 2
         val progressVal = binding.tipSB.progress
         //
-        val sliderValue = ((progressVal * 5) + 5).toString()
-        binding.tipPercentET.text = "$sliderValue%"
-        binding.tipPercentET.textSize = TEXT_SIZE[progressVal].toFloat()
+        //val sliderValue = ((progressVal * 5) + 5).toString()
+        //binding.tipPercentTV.text = "$sliderValue%"
+        //binding.tipPercentTV.textSize = TEXT_SIZE[progressVal].toFloat()
+        updateTipPercentTV(progressVal)
         binding.emoticonIV.setImageResource(DEFAULT_ICONS[progressVal])
     }
+
 
 
 }
