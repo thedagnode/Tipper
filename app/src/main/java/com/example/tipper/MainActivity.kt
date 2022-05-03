@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // add the gif
-        Glide.with(this).load(R.drawable.money_04).into(binding.moneyGifIV)
+        Glide.with(this).load(R.drawable.money_02).into(binding.moneyGifIV)
 
 
 
@@ -82,12 +82,12 @@ class MainActivity : AppCompatActivity() {
 
         // text size
         when(tipPercent){
-            0 -> binding.tipPercentTV.textSize = 20.0F;
-            1 -> binding.tipPercentTV.textSize = 23.0F;
-            2 -> binding.tipPercentTV.textSize = 27.0F;
-            3 -> binding.tipPercentTV.textSize = 32.0F;
-            4 -> binding.tipPercentTV.textSize = 36.0F;
-            5 -> binding.tipPercentTV.textSize = 40.0F;
+            0 -> binding.tipPercentTV.textSize = 20.0F
+            1 -> binding.tipPercentTV.textSize = 23.0F
+            2 -> binding.tipPercentTV.textSize = 27.0F
+            3 -> binding.tipPercentTV.textSize = 32.0F
+            4 -> binding.tipPercentTV.textSize = 36.0F
+            5 -> binding.tipPercentTV.textSize = 40.0F
 
         }
 
